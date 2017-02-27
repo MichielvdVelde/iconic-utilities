@@ -15,6 +15,8 @@ This module contains three 'utilities'.
 
 ### Token
 
+Signature: `Token.create(token)`
+
 The `Token` class represents a mobile push messaging token. The class uses [this code](https://github.com/appfeel/node-pushnotifications/blob/master/src/push-notifications.js)
 to determine if a given token string is a valid token, and its type (platform).
 
@@ -35,6 +37,8 @@ The `Signer` class provides some crypto and password related functionality.
 
 ### Signer.randomBytes
 
+Signature: `Signer.randomBytes(length = 16)`
+
 Uses node's `crypto` module to create cryptographically strong pseudo-random data.
 
 ```js
@@ -49,6 +53,8 @@ Signer.randomBytes(length).then(buffer => {
 ```
 
 ### Signer.generateSignSecret
+
+Signature: `Signer.generateSignSecret(length = 32)`
 
 Generates a hexadecimal string of the set length. Uses `Signer.randomBytes`, so
 the resulting string is cryptographically pseudo-random and as strong as node's
@@ -66,6 +72,8 @@ Signer.generateSignSecret(length).then(secret => {
 ```
 
 ### Signer.hashPassword
+
+Signature: `Signer.hashPassword(password = null, saltRounds = 10)`
 
 Uses [bcrypt](https://github.com/kelektiv/node.bcrypt.js) to hash a plain-text password
 into a 60 character hash. A salt is automatically generated and used.
@@ -86,6 +94,8 @@ Signer.hashPassword(password, saltRounds).then(hash => {
 ```
 
 ### Signer.comparePassword
+
+Signature: `Signer.comparePassword(passwordPlain = null, passwordHash = null, rejectOnInvalid = true)`
 
 Uses [bcrypt](https://github.com/kelektiv/node.bcrypt.js) to compare a plain-text password with a supplied hash.
 
@@ -111,6 +121,8 @@ The `RegexValidator` class provides methods for validating some stuff.
 
 ### RegexValidator.isValidPassword
 
+Signature: `RegexValidator.isValidPassword(password = null, rejectOnInvalid = true)`
+
 Checks to see if the provided password is valid.
 Uses the regular expression provided in [this question](http://stackoverflow.com/questions/19605150/regex-for-password-must-be-contain-at-least-8-characters-least-1-number-and-bot).
 
@@ -133,6 +145,8 @@ RegexValidator.isValidPassword(password).then(() => {
 ```
 
 ### RegexValidator.isValidBcryptHash
+
+Signature: `RegexValidator.isValidBcryptHash(password = null, rejectOnInvalid = true)`
 
 Checks to see if the provided hash is a valid bcrypt hash.
 
