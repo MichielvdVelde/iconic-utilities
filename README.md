@@ -79,7 +79,7 @@ const Signer = require('./iconic-utilities').Signer
 const password = 'Up6$fge4H6'
 const saltRounds = 10 // defaults to 10
 Signer.hashPassword(password, saltRounds).then(hash => {
-  console.log('Created hash: ${hash}')
+  console.log(`Created hash: ${hash}`)
 }).catch(err => {
   console.log(`Unable to create hash: ${err.message}`)
 })
@@ -139,7 +139,6 @@ Checks to see if the provided hash is a valid bcrypt hash.
 ```js
 const RegexValidator = require('./iconic-utilities').RegexValidator
 
-//
 RegexValidator.isValidBcryptHash(hash).then(() => {
   console.log('Valid bcrypt hash')
 }).catch(err => {
