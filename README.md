@@ -243,6 +243,28 @@ Auth.verifyToken(token, signSecret, options).then(verifiedToken => {
 })
 ```
 
+### Auth.signToken
+
+Signature: `signToken (payload = null, signSecret = null, options = {})`
+
+Signs the payload into an encoded jwt using the provided sign secret. The provided
+options are passed to jsonwebtoken.
+
+**Note:** Uses `Signer.isValidSignSecret` to verify if the provided sign secret
+is a 32-character hexadecimal string.
+
+```js
+const Auth = require('./iconic-utilities').Auth
+
+const payload = {} // the payload
+const signSecret = '7658FC960927CEC649947C6B1A05BF9D' // a 32-character hexadecimal string
+const options = { algorithm: 'HS512' } // options are passed to jsonwebtoken.sign
+Auth.signToken(token, signSecret, options).then(signedToken => {
+  console.log(`Successfully signed token: ${signedToken}`)
+}).catch(err => {
+  console.log(`Error verifying token: ${err.message}`)
+})
+
 ### License
 
 Copyright 2017 [Michiel van der Velde](http://www.michielvdvelde.nl).
