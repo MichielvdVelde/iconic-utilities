@@ -132,6 +132,7 @@ The following requirements must be satisfied:
 * At least one digit
 * At least one special character (#?!@$%^&\*-)
 * Minimum 8 in length
+* Maximum 72 in length ([see bcrypt security](https://github.com/kelektiv/node.bcrypt.js#security-issuesconcerns))
 
 ```js
 const RegexValidator = require('./iconic-utilities').RegexValidator
