@@ -13,6 +13,8 @@
     "url": "https://github.com/MichielvdVelde/iconic-utilities/issues"
   },
   "dependencies": {
-    "bcrypt": "^1.0.2"
+    "bcrypt": "^1.0.2",
+    "jsonwebtoken": "^7.3.0",
+    "validator": "^7.0.0"
   }
 }

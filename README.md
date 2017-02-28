@@ -11,7 +11,7 @@ The module is **not** published on npm (and no plan to).
 
 ## Contents
 
-This module contains three 'utilities'.
+This module contains four 'utilities'.
 
 ### Token
 
@@ -176,6 +176,70 @@ RegexValidator.isValidBcryptHash(hash).then(() => {
   console.log('Valid bcrypt hash')
 }).catch(err => {
   console.log(`Hash error: ${err.message}`)
+})
+```
+
+## Auth
+
+The `Auth` module contains project-specific code. It might be of some interest.
+It uses [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) to decode and verify
+JSON Web Tokens.
+
+### Auth.decodeToken
+
+Signature: `Auth.decodeToken(token = null, complete = false)`
+
+Decodes - **but does not verify** - an encoded JWT string.
+
+```js
+const Auth = require('./iconic-utilities').Auth
+
+const token = '...' // the encoded jwt string
+Auth.decodeToken(token).then(decodedToken => {
+  console.log('Token successfully decoded: ${decodedToken}')
+}).catch(err => {
+  console.log(`Error decoding token: ${err.message}`)
+})
+```
+
+### Auth.getDeviceIdFromToken
+
+Signature: `getDeviceIdFromToken (token = null)`
+
+My tokens have a `deviceId` field, which is a valid UUID string. This method
+checks if the `deviceId` field is present and it is a valid UUID (using [validator.js](https://github.com/chriso/validator.js))
+
+```js
+const Auth = require('./iconic-utilities').Auth
+
+const token = {} // the decoded token
+Auth.getDeviceIdFromToken(token).then(deviceId => {
+  console.log(`Got device ID: ${deviceId}`)
+}).catch(err => {
+  console.log(`Error getting device ID: ${err.message}`)
+})
+```
+
+### Auth.verifyToken
+
+Signature: `verifyToken (token = null, signSecret = null, options = {})`
+
+Attempts to verify a JSON Web Token. It uses `signSecret` as the secret and
+`options` is fed to jsonwebtoken. The validated token is returned on resolve.
+
+**Note:** Uses `Signer.isValidSignSecret` to verify if the provided sign secret
+is a 32-character hexadecimal string.
+
+```js
+const Auth = require('./iconic-utilities').Auth
+
+const token = '...' // the encoded token
+const signSecret = '7658FC960927CEC649947C6B1A05BF9D' // a 32-character hexadecimal string
+const options = { algorithms: [ 'HS512' ] } // options are passed to jsonwebtoken
+Auth.verifyToken(token, signSecret, options).then(verifiedToken => {
+  console.log(`Successfully verified token: ${verifiedToken}`)
+}).catch(err => {
+  console.log(`Error verifying token: ${err.message}`)
 })
 ```
 
