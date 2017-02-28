@@ -71,6 +71,24 @@ Signer.generateSignSecret(length).then(secret => {
 })
 ```
 
+### Signer.isValidSignSecret
+
+Signature: `isValidSignSecret (signSecret = null, length = 32)`
+
+Checks to see if the given string is a valid hexadecimal string with the given length.
+
+```js
+const Signer = require('./iconic-utilities').Signer
+
+const secret = 'F687CE5765BB0E658FA63A88F417B86F'
+const length = 32 //default length is 32 character
+Signer.isValidSignSecret(signSecret).then(() => {
+  console.log(`${secret} is a valid sign secret`)
+}).catch(err => {
+  console.log(`Not a valid secret: ${err.message}`)
+})
+```
+
 ### Signer.hashPassword
 
 Signature: `Signer.hashPassword(password = null, saltRounds = 10)`
