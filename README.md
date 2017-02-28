@@ -264,6 +264,7 @@ Auth.signToken(token, signSecret, options).then(signedToken => {
 }).catch(err => {
   console.log(`Error verifying token: ${err.message}`)
 })
+```
 
 ### License
 
