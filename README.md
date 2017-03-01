@@ -179,6 +179,23 @@ RegexValidator.isValidBcryptHash(hash).then(() => {
 })
 ```
 
+### RegexValidator.isValidJwtToken
+
+Signature: `RegexValidator.isValidJwtToken(token = null, rejectOnInvalid = true)`
+
+Checks to see if the provided token is a valid base64 urlencoded JSON Web Token.
+
+```js
+const RegexValidator = require('./iconic-utilities').RegexValidator
+
+const token = '...' // encoded token
+RegexValidator.isValidJwtToken(token).then(() => {
+  console.log('Valid JSON Web Token')
+}).catch(err => {
+  console.log(`Validation error: ${err.message}`)
+})
+```
+
 ## Auth
 
 The `Auth` module contains project-specific code. It might be of some interest.
