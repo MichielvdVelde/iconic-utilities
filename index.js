@@ -2,5 +2,6 @@ exports = module.exports = {
   Token: require('./lib/Token'),
   Signer: require('./lib/Signer'),
   RegexValidator: require('./lib/RegexValidator'),
-  Auth: require('./lib/Auth')
+  Auth: require('./lib/Auth'),
+  Util: require('./lib/Util')
 }
