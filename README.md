@@ -11,7 +11,7 @@ The module is **not** published on npm (and no plan to).
 
 ## Contents
 
-This module contains four 'utilities'.
+This module contains five 'utilities'.
 
 ### Token
 
@@ -219,24 +219,6 @@ Auth.decodeToken(token).then(decodedToken => {
 })
 ```
 
-### Auth.getDeviceIdFromToken
-
-Signature: `getDeviceIdFromToken (token = null)`
-
-My tokens have a `deviceId` field, which is a valid UUID string. This method
-checks if the `deviceId` field is present and it is a valid UUID (using [validator.js](https://github.com/chriso/validator.js))
-
-```js
-const Auth = require('./iconic-utilities').Auth
-
-const token = {} // the decoded token
-Auth.getDeviceIdFromToken(token).then(deviceId => {
-  console.log(`Got device ID: ${deviceId}`)
-}).catch(err => {
-  console.log(`Error getting device ID: ${err.message}`)
-})
-```
-
 ### Auth.verifyToken
 
 Signature: `verifyToken (token = null, signSecret = null, options = {})`
@@ -280,6 +262,28 @@ Auth.signToken(token, signSecret, options).then(signedToken => {
   console.log(`Successfully signed token: ${signedToken}`)
 }).catch(err => {
   console.log(`Error verifying token: ${err.message}`)
+})
+```
+
+## Util
+
+Contains several utility functionality that don't really fit anywhere else.
+
+### Util.getDeviceIdFromToken
+
+Signature: `getDeviceIdFromToken (token = null)`
+
+My tokens have a `deviceId` field, which is a valid UUID string. This method
+checks if the `deviceId` field is present and it is a valid UUID (using [validator.js](https://github.com/chriso/validator.js))
+
+```js
+const Util = require('./iconic-utilities').Util
+
+const token = {} // the decoded token
+Util.getDeviceIdFromToken(token).then(deviceId => {
+  console.log(`Got device ID: ${deviceId}`)
+}).catch(err => {
+  console.log(`Error getting device ID: ${err.message}`)
 })
 ```
 
