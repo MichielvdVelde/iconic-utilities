@@ -7,7 +7,7 @@ may be of some value to other people, so here it is.
 
 The source is documented, see the code for specifics. Also see [test.js](test.js) for a few examples.
 
-The module is **not** published on npm (and no plan to).
+The module is **not** published on npm (and no plan to). It now uses [Boom](https://github.com/hapijs/boom) for error handling.
 
 ## Contents
 
