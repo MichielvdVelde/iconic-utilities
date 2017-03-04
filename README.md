@@ -258,7 +258,7 @@ const Auth = require('./iconic-utilities').Auth
 const payload = {} // the payload
 const signSecret = '7658FC960927CEC649947C6B1A05BF9D' // a 32-character hexadecimal string
 const options = { algorithm: 'HS512' } // options are passed to jsonwebtoken.sign
-Auth.signToken(token, signSecret, options).then(signedToken => {
+Auth.signToken(payload, signSecret, options).then(signedToken => {
   console.log(`Successfully signed token: ${signedToken}`)
 }).catch(err => {
   console.log(`Error verifying token: ${err.message}`)
